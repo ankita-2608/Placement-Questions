@@ -1,0 +1,17 @@
+ public static int kthSmallest(int[] arr, int l, int r, int k) 
+    { 
+        //Your code here
+        // Arrays.sort(arr);
+        // return arr[k-1];
+       PriorityQueue<Integer>al=new PriorityQueue<>(Collections.reverseOrder());
+        for(int i=0;i<k;i++){
+            al.add(arr[i]);
+        }
+        for(int i=k;i<arr.length;i++){
+            if(al.peek()>arr[i]){
+                al.poll();
+                al.add(arr[i]);
+            }
+        }
+        return al.peek();
+    } 
